@@ -18,9 +18,9 @@ static CGFloat const kMaxImageHeight = 150;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageHeight;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *imageLeading;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *imageTrailing;
-@property (weak, nonatomic) IBOutlet UIImageView *thumbnailView;
 
 @property (nonatomic, strong) NSString* fileName;
+
 
 @end
 
@@ -46,7 +46,7 @@ static CGFloat const kMaxImageHeight = 150;
 
     __weak typeof(self) weakSelf = self;
     self.thumbnailView.hidden = YES;
-    [[ImageCache sharedInstance] loadImage:message.fileName ofSize: size withCompletion:^(UIImage *image, NSString *fileName, NSError *error) {
+    self.imageFetchOperation = [[ImageCache sharedInstance] loadImage:message.fileName ofSize: size withCompletion:^(UIImage *image, NSString *fileName, NSError *error) {
         if ([[weakSelf fileName] isEqual:fileName]) {
             weakSelf.thumbnailView.hidden = NO;
             weakSelf.thumbnailView.image = image;

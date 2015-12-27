@@ -14,4 +14,7 @@
 
 - (void) configureWithMessage: (ImageMessage *) message;
 
+@property (nonatomic, weak) NSOperation *imageFetchOperation;
+@property (weak, nonatomic) IBOutlet UIImageView *thumbnailView;
+
 @end

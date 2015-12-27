@@ -13,10 +13,8 @@
 @interface LocationCell ()
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *imageTrailing;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *imageLeading;
-@property (weak, nonatomic) IBOutlet UIImageView *thumbnailView;
 
 @property (nonatomic, assign) CLLocationCoordinate2D coordinate;
-@property (nonatomic, strong) MapImageRenderer *renderer;
 
 @end
 
@@ -24,11 +22,6 @@
 
 - (void)awakeFromNib {
     // Initialization code
-}
-
-- (void)prepareForReuse {
-    [self.renderer cancel];
-    self.renderer = nil;
 }
 
 - (void) configureWithMessage: (LocationMessage *) message mapRenderer: (MapImageRenderer *) renderer {
@@ -46,9 +39,8 @@
     
     self.thumbnailView.hidden = YES;
     
-    self.renderer = renderer;
-    [self.renderer renderCoordinate:self.coordinate withCompletion:^(MapImageRenderer *renderer, UIImage *image, NSError *error) {
-        if (renderer == self.renderer) {
+    self.mapRenderingOperation = [renderer renderCoordinate:self.coordinate withCompletion:^(CLLocationCoordinate2D coordinate, UIImage *image, NSError *error) {
+        if (coordinate.latitude == weakSelf.coordinate.latitude && coordinate.longitude == weakSelf.coordinate.longitude) {
             weakSelf.thumbnailView.image = image;
             weakSelf.thumbnailView.hidden = NO;
         }

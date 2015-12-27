@@ -10,6 +10,8 @@
 
 @interface UIImage(Resizing)
 
++ (UIImage *)decodedImageWithImage:(UIImage *)image;
+
 -(UIImage*)scaleToFillSize:(CGSize)newSize;
 -(UIImage*)scaleToFitSize:(CGSize)newSize;
 

@@ -34,12 +34,17 @@
 
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 
+@property (nonatomic, strong) MapImageRenderer *mapRenderer;
+
+
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.mapRenderer = [[MapImageRenderer alloc] initInView:self.tableView];
     
     [[LocationManager sharedInstance] start];
     [[DataManager sharedInstance] start];
@@ -105,8 +110,7 @@
         return cell;
     } else {
         LocationCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(LocationCell.class) forIndexPath:indexPath];
-        MapImageRenderer *renderer = [[MapImageRenderer alloc] initInView:self.view];
-        [cell configureWithMessage:(LocationMessage *)message mapRenderer: renderer];
+        [cell configureWithMessage:(LocationMessage *)message mapRenderer: self.mapRenderer];
         cell.transform = CGAffineTransformMakeScale(1, -1);
         return cell;
     }
@@ -123,18 +127,29 @@
     }
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-//    if ([self.textView isFirstResponder]) {
-//        [self.textView resignFirstResponder];
-//    }
-}
-
-- (void) scrollToBottomAnimated: (BOOL) animated {
-    if (self.fetchedResultsController.fetchedObjects.count > 0) {
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.fetchedResultsController.fetchedObjects.count - 1 inSection:0];
-        [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:animated];
+- (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([cell isKindOfClass:ImageCell.class]) {
+        [[((ImageCell *) cell) imageFetchOperation] cancel];
+        [[((ImageCell *) cell) thumbnailView] setImage:nil];
+    }
+    if ([cell isKindOfClass:LocationCell.class]) {
+        [[((LocationCell *) cell) mapRenderingOperation] cancel];
+        [[((LocationCell *) cell) thumbnailView] setImage:nil];
     }
 }
+
+//- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+////    if ([self.textView isFirstResponder]) {
+////        [self.textView resignFirstResponder];
+////    }
+//}
+
+//- (void) scrollToBottomAnimated: (BOOL) animated {
+//    if (self.fetchedResultsController.fetchedObjects.count > 0) {
+//        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.fetchedResultsController.fetchedObjects.count - 1 inSection:0];
+//        [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:animated];
+//    }
+//}
 
 #pragma mark - actions
 

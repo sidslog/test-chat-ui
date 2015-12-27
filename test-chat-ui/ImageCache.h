@@ -16,6 +16,6 @@ typedef void(^ImageCacheLoadCompletionBlock)(UIImage *image, NSString *fileName,
 
 + (instancetype) sharedInstance;
 - (void) saveImage: (UIImage *) image withCompletion: (ImageCacheSaveCompletionBlock) completion;
-- (void) loadImage: (NSString *) fileName ofSize: (CGSize) size withCompletion: (ImageCacheLoadCompletionBlock) completion;
+- (NSOperation *) loadImage: (NSString *) fileName ofSize: (CGSize) size withCompletion: (ImageCacheLoadCompletionBlock) completion;
 
 @end

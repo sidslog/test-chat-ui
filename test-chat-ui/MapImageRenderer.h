@@ -12,12 +12,11 @@
 
 @class MapImageRenderer;
 
-typedef void(^MapImageRendererCompletionBlock)(MapImageRenderer *renderer, UIImage *image, NSError *error);
+typedef void(^MapImageRendererCompletionBlock)(CLLocationCoordinate2D coordinate, UIImage *image, NSError *error);
 
 @interface MapImageRenderer : NSObject
 
 - (instancetype) initInView: (UIView *) view;
-- (void) renderCoordinate: (CLLocationCoordinate2D) coordinate withCompletion: (MapImageRendererCompletionBlock) completion;
-- (void) cancel;
+- (NSOperation *) renderCoordinate: (CLLocationCoordinate2D) coordinate withCompletion: (MapImageRendererCompletionBlock) completion;
 
 @end

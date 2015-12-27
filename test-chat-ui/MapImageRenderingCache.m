@@ -28,7 +28,7 @@
 - (instancetype)init {
     if (self = [super init]) {
         self.imageCache = [[NSCache alloc] init];
-        self.imageCache.countLimit = 20;
+        self.imageCache.countLimit = 10;
     }
     return self;
 }
