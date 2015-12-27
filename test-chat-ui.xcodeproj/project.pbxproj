@@ -11,9 +11,34 @@
 		976F8B0F1C2EA83600540B23 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 976F8B0E1C2EA83600540B23 /* AppDelegate.m */; };
 		976F8B121C2EA83600540B23 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 976F8B111C2EA83600540B23 /* ViewController.m */; };
 		976F8B151C2EA83600540B23 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 976F8B131C2EA83600540B23 /* Main.storyboard */; };
-		976F8B181C2EA83600540B23 /* test_chat_ui.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 976F8B161C2EA83600540B23 /* test_chat_ui.xcdatamodeld */; };
 		976F8B1A1C2EA83600540B23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 976F8B191C2EA83600540B23 /* Assets.xcassets */; };
 		976F8B1D1C2EA83600540B23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 976F8B1B1C2EA83600540B23 /* LaunchScreen.storyboard */; };
+		976F8B401C2EAA5B00540B23 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 976F8B3F1C2EAA5B00540B23 /* DataManager.m */; };
+		976F8B421C2EAB2000540B23 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 976F8B411C2EAB2000540B23 /* CoreLocation.framework */; };
+		976F8B441C2EAB2500540B23 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 976F8B431C2EAB2500540B23 /* MapKit.framework */; };
+		976F8B461C2EB04E00540B23 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 976F8B451C2EB04E00540B23 /* CoreData.framework */; };
+		976F8B571C2EB07C00540B23 /* TextMessage+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 976F8B481C2EB07C00540B23 /* TextMessage+CoreDataProperties.m */; };
+		976F8B581C2EB07C00540B23 /* TextMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 976F8B4A1C2EB07C00540B23 /* TextMessage.m */; };
+		976F8B591C2EB07C00540B23 /* ImageMessage+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 976F8B4C1C2EB07C00540B23 /* ImageMessage+CoreDataProperties.m */; };
+		976F8B5A1C2EB07C00540B23 /* ImageMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 976F8B4E1C2EB07C00540B23 /* ImageMessage.m */; };
+		976F8B5B1C2EB07C00540B23 /* LocationMessage+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 976F8B501C2EB07C00540B23 /* LocationMessage+CoreDataProperties.m */; };
+		976F8B5C1C2EB07C00540B23 /* LocationMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 976F8B521C2EB07C00540B23 /* LocationMessage.m */; };
+		976F8B5D1C2EB07C00540B23 /* MessageBase+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 976F8B541C2EB07C00540B23 /* MessageBase+CoreDataProperties.m */; };
+		976F8B5E1C2EB07C00540B23 /* MessageBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 976F8B561C2EB07C00540B23 /* MessageBase.m */; };
+		976F8B621C2EB30C00540B23 /* MapImageRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 976F8B611C2EB30C00540B23 /* MapImageRenderer.m */; };
+		976F8B671C2EB82C00540B23 /* MapImageRenderingCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 976F8B661C2EB82C00540B23 /* MapImageRenderingCache.m */; };
+		976F8B6A1C2EC08C00540B23 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 976F8B691C2EC08C00540B23 /* LocationManager.m */; };
+		976F8B741C2ECD8F00540B23 /* TextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 976F8B721C2ECD8F00540B23 /* TextCell.m */; };
+		976F8B751C2ECD8F00540B23 /* TextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 976F8B731C2ECD8F00540B23 /* TextCell.xib */; };
+		976F8B791C2ECEB700540B23 /* ImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 976F8B771C2ECEB700540B23 /* ImageCell.m */; };
+		976F8B7A1C2ECEB700540B23 /* ImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 976F8B781C2ECEB700540B23 /* ImageCell.xib */; };
+		976F8B7D1C2ED5D800540B23 /* ImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 976F8B7C1C2ED5D800540B23 /* ImageCache.m */; };
+		976F8B7F1C2EE01F00540B23 /* test_chat_ui.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 976F8B161C2EA83600540B23 /* test_chat_ui.xcdatamodeld */; };
+		976F8B851C2EEC3600540B23 /* LocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 976F8B831C2EEC3600540B23 /* LocationCell.m */; };
+		976F8B861C2EEC3600540B23 /* LocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 976F8B841C2EEC3600540B23 /* LocationCell.xib */; };
+		976F8B891C2F040100540B23 /* BotService.m in Sources */ = {isa = PBXBuildFile; fileRef = 976F8B881C2F040100540B23 /* BotService.m */; };
+		976F8B8F1C30117800540B23 /* UIImage+Resizing.m in Sources */ = {isa = PBXBuildFile; fileRef = 976F8B8E1C30117800540B23 /* UIImage+Resizing.m */; };
+		976F8B921C30120300540B23 /* UIImage+OrientationFix.m in Sources */ = {isa = PBXBuildFile; fileRef = 976F8B911C30120300540B23 /* UIImage+OrientationFix.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +53,50 @@
 		976F8B191C2EA83600540B23 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		976F8B1C1C2EA83600540B23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		976F8B1E1C2EA83600540B23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		976F8B3E1C2EAA5B00540B23 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
+		976F8B3F1C2EAA5B00540B23 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
+		976F8B411C2EAB2000540B23 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		976F8B431C2EAB2500540B23 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		976F8B451C2EB04E00540B23 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		976F8B471C2EB07C00540B23 /* TextMessage+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TextMessage+CoreDataProperties.h"; sourceTree = "<group>"; };
+		976F8B481C2EB07C00540B23 /* TextMessage+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TextMessage+CoreDataProperties.m"; sourceTree = "<group>"; };
+		976F8B491C2EB07C00540B23 /* TextMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextMessage.h; sourceTree = "<group>"; };
+		976F8B4A1C2EB07C00540B23 /* TextMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextMessage.m; sourceTree = "<group>"; };
+		976F8B4B1C2EB07C00540B23 /* ImageMessage+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ImageMessage+CoreDataProperties.h"; sourceTree = "<group>"; };
+		976F8B4C1C2EB07C00540B23 /* ImageMessage+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ImageMessage+CoreDataProperties.m"; sourceTree = "<group>"; };
+		976F8B4D1C2EB07C00540B23 /* ImageMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageMessage.h; sourceTree = "<group>"; };
+		976F8B4E1C2EB07C00540B23 /* ImageMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageMessage.m; sourceTree = "<group>"; };
+		976F8B4F1C2EB07C00540B23 /* LocationMessage+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LocationMessage+CoreDataProperties.h"; sourceTree = "<group>"; };
+		976F8B501C2EB07C00540B23 /* LocationMessage+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LocationMessage+CoreDataProperties.m"; sourceTree = "<group>"; };
+		976F8B511C2EB07C00540B23 /* LocationMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationMessage.h; sourceTree = "<group>"; };
+		976F8B521C2EB07C00540B23 /* LocationMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationMessage.m; sourceTree = "<group>"; };
+		976F8B531C2EB07C00540B23 /* MessageBase+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MessageBase+CoreDataProperties.h"; sourceTree = "<group>"; };
+		976F8B541C2EB07C00540B23 /* MessageBase+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MessageBase+CoreDataProperties.m"; sourceTree = "<group>"; };
+		976F8B551C2EB07C00540B23 /* MessageBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageBase.h; sourceTree = "<group>"; };
+		976F8B561C2EB07C00540B23 /* MessageBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageBase.m; sourceTree = "<group>"; };
+		976F8B601C2EB30C00540B23 /* MapImageRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapImageRenderer.h; sourceTree = "<group>"; };
+		976F8B611C2EB30C00540B23 /* MapImageRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapImageRenderer.m; sourceTree = "<group>"; };
+		976F8B651C2EB82C00540B23 /* MapImageRenderingCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapImageRenderingCache.h; sourceTree = "<group>"; };
+		976F8B661C2EB82C00540B23 /* MapImageRenderingCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapImageRenderingCache.m; sourceTree = "<group>"; };
+		976F8B681C2EC08C00540B23 /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
+		976F8B691C2EC08C00540B23 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
+		976F8B711C2ECD8F00540B23 /* TextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextCell.h; sourceTree = "<group>"; };
+		976F8B721C2ECD8F00540B23 /* TextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextCell.m; sourceTree = "<group>"; };
+		976F8B731C2ECD8F00540B23 /* TextCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextCell.xib; sourceTree = "<group>"; };
+		976F8B761C2ECEB700540B23 /* ImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCell.h; sourceTree = "<group>"; };
+		976F8B771C2ECEB700540B23 /* ImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCell.m; sourceTree = "<group>"; };
+		976F8B781C2ECEB700540B23 /* ImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageCell.xib; sourceTree = "<group>"; };
+		976F8B7B1C2ED5D800540B23 /* ImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCache.h; sourceTree = "<group>"; };
+		976F8B7C1C2ED5D800540B23 /* ImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCache.m; sourceTree = "<group>"; };
+		976F8B821C2EEC3600540B23 /* LocationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationCell.h; sourceTree = "<group>"; };
+		976F8B831C2EEC3600540B23 /* LocationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationCell.m; sourceTree = "<group>"; };
+		976F8B841C2EEC3600540B23 /* LocationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationCell.xib; sourceTree = "<group>"; };
+		976F8B871C2F040100540B23 /* BotService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BotService.h; sourceTree = "<group>"; };
+		976F8B881C2F040100540B23 /* BotService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BotService.m; sourceTree = "<group>"; };
+		976F8B8D1C30117800540B23 /* UIImage+Resizing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resizing.h"; sourceTree = "<group>"; };
+		976F8B8E1C30117800540B23 /* UIImage+Resizing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resizing.m"; sourceTree = "<group>"; };
+		976F8B901C30120300540B23 /* UIImage+OrientationFix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+OrientationFix.h"; sourceTree = "<group>"; };
+		976F8B911C30120300540B23 /* UIImage+OrientationFix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+OrientationFix.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +104,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				976F8B461C2EB04E00540B23 /* CoreData.framework in Frameworks */,
+				976F8B441C2EAB2500540B23 /* MapKit.framework in Frameworks */,
+				976F8B421C2EAB2000540B23 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +116,9 @@
 		976F8AFE1C2EA83600540B23 = {
 			isa = PBXGroup;
 			children = (
+				976F8B451C2EB04E00540B23 /* CoreData.framework */,
+				976F8B431C2EAB2500540B23 /* MapKit.framework */,
+				976F8B411C2EAB2000540B23 /* CoreLocation.framework */,
 				976F8B091C2EA83600540B23 /* test-chat-ui */,
 				976F8B081C2EA83600540B23 /* Products */,
 			);
@@ -60,15 +135,17 @@
 		976F8B091C2EA83600540B23 /* test-chat-ui */ = {
 			isa = PBXGroup;
 			children = (
+				976F8B6E1C2EC85100540B23 /* View */,
+				976F8B6B1C2EC3EE00540B23 /* Service */,
+				976F8B6F1C2ECCE100540B23 /* ImageCache */,
+				976F8B5F1C2EB2D600540B23 /* MapRendering */,
+				976F8B241C2EA87100540B23 /* Model */,
 				976F8B0D1C2EA83600540B23 /* AppDelegate.h */,
 				976F8B0E1C2EA83600540B23 /* AppDelegate.m */,
-				976F8B101C2EA83600540B23 /* ViewController.h */,
-				976F8B111C2EA83600540B23 /* ViewController.m */,
 				976F8B131C2EA83600540B23 /* Main.storyboard */,
 				976F8B191C2EA83600540B23 /* Assets.xcassets */,
 				976F8B1B1C2EA83600540B23 /* LaunchScreen.storyboard */,
 				976F8B1E1C2EA83600540B23 /* Info.plist */,
-				976F8B161C2EA83600540B23 /* test_chat_ui.xcdatamodeld */,
 				976F8B0A1C2EA83600540B23 /* Supporting Files */,
 			);
 			path = "test-chat-ui";
@@ -80,6 +157,101 @@
 				976F8B0B1C2EA83600540B23 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		976F8B241C2EA87100540B23 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				976F8B161C2EA83600540B23 /* test_chat_ui.xcdatamodeld */,
+				976F8B251C2EA87900540B23 /* Objects */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		976F8B251C2EA87900540B23 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				976F8B471C2EB07C00540B23 /* TextMessage+CoreDataProperties.h */,
+				976F8B481C2EB07C00540B23 /* TextMessage+CoreDataProperties.m */,
+				976F8B491C2EB07C00540B23 /* TextMessage.h */,
+				976F8B4A1C2EB07C00540B23 /* TextMessage.m */,
+				976F8B4B1C2EB07C00540B23 /* ImageMessage+CoreDataProperties.h */,
+				976F8B4C1C2EB07C00540B23 /* ImageMessage+CoreDataProperties.m */,
+				976F8B4D1C2EB07C00540B23 /* ImageMessage.h */,
+				976F8B4E1C2EB07C00540B23 /* ImageMessage.m */,
+				976F8B4F1C2EB07C00540B23 /* LocationMessage+CoreDataProperties.h */,
+				976F8B501C2EB07C00540B23 /* LocationMessage+CoreDataProperties.m */,
+				976F8B511C2EB07C00540B23 /* LocationMessage.h */,
+				976F8B521C2EB07C00540B23 /* LocationMessage.m */,
+				976F8B531C2EB07C00540B23 /* MessageBase+CoreDataProperties.h */,
+				976F8B541C2EB07C00540B23 /* MessageBase+CoreDataProperties.m */,
+				976F8B551C2EB07C00540B23 /* MessageBase.h */,
+				976F8B561C2EB07C00540B23 /* MessageBase.m */,
+			);
+			name = Objects;
+			sourceTree = "<group>";
+		};
+		976F8B5F1C2EB2D600540B23 /* MapRendering */ = {
+			isa = PBXGroup;
+			children = (
+				976F8B601C2EB30C00540B23 /* MapImageRenderer.h */,
+				976F8B611C2EB30C00540B23 /* MapImageRenderer.m */,
+				976F8B651C2EB82C00540B23 /* MapImageRenderingCache.h */,
+				976F8B661C2EB82C00540B23 /* MapImageRenderingCache.m */,
+			);
+			name = MapRendering;
+			sourceTree = "<group>";
+		};
+		976F8B6B1C2EC3EE00540B23 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				976F8B3E1C2EAA5B00540B23 /* DataManager.h */,
+				976F8B3F1C2EAA5B00540B23 /* DataManager.m */,
+				976F8B681C2EC08C00540B23 /* LocationManager.h */,
+				976F8B691C2EC08C00540B23 /* LocationManager.m */,
+				976F8B871C2F040100540B23 /* BotService.h */,
+				976F8B881C2F040100540B23 /* BotService.m */,
+			);
+			name = Service;
+			sourceTree = "<group>";
+		};
+		976F8B6E1C2EC85100540B23 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				976F8B701C2ECD6500540B23 /* Cells */,
+				976F8B101C2EA83600540B23 /* ViewController.h */,
+				976F8B111C2EA83600540B23 /* ViewController.m */,
+				976F8B901C30120300540B23 /* UIImage+OrientationFix.h */,
+				976F8B911C30120300540B23 /* UIImage+OrientationFix.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		976F8B6F1C2ECCE100540B23 /* ImageCache */ = {
+			isa = PBXGroup;
+			children = (
+				976F8B7B1C2ED5D800540B23 /* ImageCache.h */,
+				976F8B7C1C2ED5D800540B23 /* ImageCache.m */,
+				976F8B8D1C30117800540B23 /* UIImage+Resizing.h */,
+				976F8B8E1C30117800540B23 /* UIImage+Resizing.m */,
+			);
+			name = ImageCache;
+			sourceTree = "<group>";
+		};
+		976F8B701C2ECD6500540B23 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				976F8B711C2ECD8F00540B23 /* TextCell.h */,
+				976F8B721C2ECD8F00540B23 /* TextCell.m */,
+				976F8B731C2ECD8F00540B23 /* TextCell.xib */,
+				976F8B761C2ECEB700540B23 /* ImageCell.h */,
+				976F8B771C2ECEB700540B23 /* ImageCell.m */,
+				976F8B781C2ECEB700540B23 /* ImageCell.xib */,
+				976F8B821C2EEC3600540B23 /* LocationCell.h */,
+				976F8B831C2EEC3600540B23 /* LocationCell.m */,
+				976F8B841C2EEC3600540B23 /* LocationCell.xib */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -113,6 +285,7 @@
 				TargetAttributes = {
 					976F8B061C2EA83600540B23 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = FH8VB97RY2;
 					};
 				};
 			};
@@ -139,8 +312,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				976F8B861C2EEC3600540B23 /* LocationCell.xib in Resources */,
 				976F8B1D1C2EA83600540B23 /* LaunchScreen.storyboard in Resources */,
 				976F8B1A1C2EA83600540B23 /* Assets.xcassets in Resources */,
+				976F8B751C2ECD8F00540B23 /* TextCell.xib in Resources */,
+				976F8B7A1C2ECEB700540B23 /* ImageCell.xib in Resources */,
 				976F8B151C2EA83600540B23 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -152,9 +328,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				976F8B6A1C2EC08C00540B23 /* LocationManager.m in Sources */,
+				976F8B741C2ECD8F00540B23 /* TextCell.m in Sources */,
+				976F8B851C2EEC3600540B23 /* LocationCell.m in Sources */,
+				976F8B5D1C2EB07C00540B23 /* MessageBase+CoreDataProperties.m in Sources */,
+				976F8B7D1C2ED5D800540B23 /* ImageCache.m in Sources */,
+				976F8B5E1C2EB07C00540B23 /* MessageBase.m in Sources */,
+				976F8B571C2EB07C00540B23 /* TextMessage+CoreDataProperties.m in Sources */,
+				976F8B921C30120300540B23 /* UIImage+OrientationFix.m in Sources */,
+				976F8B621C2EB30C00540B23 /* MapImageRenderer.m in Sources */,
 				976F8B121C2EA83600540B23 /* ViewController.m in Sources */,
-				976F8B181C2EA83600540B23 /* test_chat_ui.xcdatamodeld in Sources */,
+				976F8B791C2ECEB700540B23 /* ImageCell.m in Sources */,
+				976F8B8F1C30117800540B23 /* UIImage+Resizing.m in Sources */,
+				976F8B5A1C2EB07C00540B23 /* ImageMessage.m in Sources */,
+				976F8B5C1C2EB07C00540B23 /* LocationMessage.m in Sources */,
+				976F8B401C2EAA5B00540B23 /* DataManager.m in Sources */,
+				976F8B581C2EB07C00540B23 /* TextMessage.m in Sources */,
+				976F8B5B1C2EB07C00540B23 /* LocationMessage+CoreDataProperties.m in Sources */,
+				976F8B591C2EB07C00540B23 /* ImageMessage+CoreDataProperties.m in Sources */,
 				976F8B0F1C2EA83600540B23 /* AppDelegate.m in Sources */,
+				976F8B671C2EB82C00540B23 /* MapImageRenderingCache.m in Sources */,
+				976F8B891C2F040100540B23 /* BotService.m in Sources */,
+				976F8B7F1C2EE01F00540B23 /* test_chat_ui.xcdatamodeld in Sources */,
 				976F8B0C1C2EA83600540B23 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -265,7 +460,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "test-chat-ui/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sidslog.testimagesearch.test-chat-ui";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -276,7 +473,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "test-chat-ui/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sidslog.testimagesearch.test-chat-ui";
 				PRODUCT_NAME = "$(TARGET_NAME)";
