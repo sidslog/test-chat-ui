@@ -14,7 +14,6 @@
 @interface LocationCell : UITableViewCell
 
 - (void) configureWithMessage: (LocationMessage *) message mapRenderer: (MapImageRenderer *) renderer;
-@property (weak, nonatomic) IBOutlet UIImageView *thumbnailView;
 @property (nonatomic, strong) NSOperation *mapRenderingOperation;
 
 @end

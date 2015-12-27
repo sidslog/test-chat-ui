@@ -14,7 +14,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="190" height="170"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Hc7-jc-aN0">
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Hc7-jc-aN0">
                         <rect key="frame" x="85" y="75" width="20" height="20"/>
                     </activityIndicatorView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aZh-cp-cG7">
@@ -41,6 +41,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="activityIndicator" destination="Hc7-jc-aN0" id="WxG-OS-N48"/>
                 <outlet property="imageLeading" destination="naO-hq-eI8" id="Pl6-yO-aUT"/>
                 <outlet property="imageTrailing" destination="ANx-an-2SN" id="edK-MK-Jh0"/>
                 <outlet property="thumbnailView" destination="aZh-cp-cG7" id="TSM-2a-PQE"/>

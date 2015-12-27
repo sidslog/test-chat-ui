@@ -25,7 +25,7 @@
 
 #import "UIImage+OrientationFix.h"
 
-@interface ViewController () <UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, NSFetchedResultsControllerDelegate>
+@interface ViewController () <UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, NSFetchedResultsControllerDelegate, UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet UIButton *sendTextButton;
@@ -36,6 +36,7 @@
 
 @property (nonatomic, strong) MapImageRenderer *mapRenderer;
 
+@property (nonatomic, strong) UITapGestureRecognizer *tapRecognizer;
 
 @end
 
@@ -44,7 +45,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.mapRenderer = [[MapImageRenderer alloc] initInView:self.tableView];
+    self.mapRenderer = [[MapImageRenderer alloc] initInView:self.view];
     
     [[LocationManager sharedInstance] start];
     [[DataManager sharedInstance] start];
@@ -53,6 +54,8 @@
     self.textView.layer.borderWidth = 1;
     self.textView.layer.cornerRadius = 5;
     
+    // сделаем пока скролл к нижней ячейке перевернув таблицу и все ячейки.
+    // тап по статус бару будет работать неправильно
     self.tableView.transform = CGAffineTransformMakeScale(1, -1);
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
@@ -67,12 +70,14 @@
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass(ImageCell.class) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:NSStringFromClass(ImageCell.class)];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass(LocationCell.class) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:NSStringFromClass(LocationCell.class)];
     
+    self.tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTap:)];
+    [self.tableView addGestureRecognizer:self.tapRecognizer];
+    
     [self observeKeyboard];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-//    [self scrollToBottomAnimated:NO];
 }
 
 - (void)observeKeyboard {
@@ -83,7 +88,6 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - table view datasource
@@ -128,41 +132,34 @@
 }
 
 - (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    // отменим операции, если уходим с ячеек
     if ([cell isKindOfClass:ImageCell.class]) {
         [[((ImageCell *) cell) imageFetchOperation] cancel];
-        [[((ImageCell *) cell) thumbnailView] setImage:nil];
     }
     if ([cell isKindOfClass:LocationCell.class]) {
         [[((LocationCell *) cell) mapRenderingOperation] cancel];
-        [[((LocationCell *) cell) thumbnailView] setImage:nil];
     }
 }
 
-//- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-////    if ([self.textView isFirstResponder]) {
-////        [self.textView resignFirstResponder];
-////    }
-//}
-
-//- (void) scrollToBottomAnimated: (BOOL) animated {
-//    if (self.fetchedResultsController.fetchedObjects.count > 0) {
-//        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.fetchedResultsController.fetchedObjects.count - 1 inSection:0];
-//        [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:animated];
-//    }
-//}
-
 #pragma mark - actions
+
+- (void) onTap: (id) sender {
+    if (self.textView.isFirstResponder) {
+        [self.textView resignFirstResponder];
+    }
+}
 
 - (IBAction)onSendText:(id)sender {
     __weak typeof(self) weakSelf = self;
-    [self enableSendButtons:NO];
+    [self setControlsEnabled:NO];
     NSString *text = self.textView.text;
     [[DataManager sharedInstance] addTextMessage:text fromMe:YES withCompletion:^(BOOL result, NSError *error) {
-        [weakSelf enableSendButtons:YES];
+        [weakSelf setControlsEnabled:YES];
         if (!result) {
             [weakSelf showError:error];
         } else {
             weakSelf.textView.text = @"";
+            weakSelf.sendTextButton.enabled = NO;
             [[BotService sharedInstance] scheduleTextMessage:text];
         }
     }];
@@ -177,8 +174,10 @@
     UIAlertAction *locationAction = [UIAlertAction actionWithTitle:@"Current location" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [weakSelf sendLocation];
     }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
     [alert addAction:imageAction];
     [alert addAction:locationAction];
+    [alert addAction:cancelAction];
     [self presentViewController:alert animated:YES completion:nil];
     return;
     
@@ -197,9 +196,9 @@
     CLLocationCoordinate2D coordinate = [LocationManager sharedInstance].currentCoordinate;
     if (CLLocationCoordinate2DIsValid(coordinate)) {
         __weak typeof(self) weakSelf = self;
-        [self enableSendButtons:NO];
+        [self setControlsEnabled:NO];
         [[DataManager sharedInstance] addLocationMessage:coordinate fromMe:YES withCompletion:^(BOOL result, NSError *error) {
-            [weakSelf enableSendButtons:YES];
+            [weakSelf setControlsEnabled:YES];
             if (!result) {
                 [weakSelf showError:error];
             } else {
@@ -209,7 +208,7 @@
     }
 }
 
-- (void) enableSendButtons: (BOOL) enabled {
+- (void) setControlsEnabled: (BOOL) enabled {
     if (!enabled && [self.textView isFirstResponder]) {
         [self.textView resignFirstResponder];
     }
@@ -235,11 +234,11 @@
     [self dismissViewControllerAnimated:YES completion:^{
         UIImage *image = [info[UIImagePickerControllerOriginalImage] normalizedImage];
         if (image) {
-            [weakSelf enableSendButtons:NO];
+            [weakSelf setControlsEnabled:NO];
             [[ImageCache sharedInstance] saveImage:image withCompletion:^(NSString *fileName, NSError *error) {
                 if (fileName) {
                     [[DataManager sharedInstance] addImageMessage:fileName width:image.size.width height:image.size.height fromMe:YES withCompletion:^(BOOL result, NSError *error) {
-                        [weakSelf enableSendButtons:YES];
+                        [weakSelf setControlsEnabled:YES];
                         if (!result) {
                             [weakSelf showError:error];
                         } else {
@@ -247,7 +246,7 @@
                         }
                     }];
                 } else {
-                    [weakSelf enableSendButtons:YES];
+                    [weakSelf setControlsEnabled:YES];
                     [weakSelf showError:error];
                 }
             }];
@@ -318,23 +317,8 @@
     }
 }
 
-//- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-//    [self.tableView reloadData];
-//    // так как обновлеие у нас сейчас состоит только из добавления новых сообщений - смотрим, если мы где-то внизу - скроллим вниз
-//    __weak typeof(self) weakSelf = self;
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//        // берем нижнюю видимую ячейку
-//        NSIndexPath *lastIndexPath = [[weakSelf.tableView indexPathsForVisibleRows] lastObject];
-//        if (lastIndexPath && lastIndexPath.row > weakSelf.fetchedResultsController.fetchedObjects.count - 4) {
-//            [weakSelf scrollToBottomAnimated:YES];
-//        }
-//    });
-//}
+#pragma mark - keyboard
 
-
-#pragma mark - keyboard 
-
-// The callback for frame-changing of keyboard
 - (void)keyboardWillShow:(NSNotification *)notification {
     NSDictionary *info = [notification userInfo];
     NSValue *kbFrame = [info objectForKey:UIKeyboardFrameEndUserInfoKey];
@@ -342,10 +326,8 @@
     CGRect keyboardFrame = [kbFrame CGRectValue];
     CGFloat height = keyboardFrame.size.height;
     self.keyboardHeight.constant = height;
-    CGPoint currentOffeset = self.tableView.contentOffset;
     [UIView animateWithDuration:animationDuration animations:^{
         [self.view layoutIfNeeded];
-        [self.tableView setContentOffset:CGPointMake(currentOffeset.x, currentOffeset.y) animated:NO];
     }];
 }
 
@@ -359,5 +341,12 @@
     }];
 }
 
+#pragma mark - textview delegate
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    NSString *newText = [textView.text stringByReplacingCharactersInRange:range withString:text];
+    self.sendTextButton.enabled = newText.length > 0;
+    return YES;
+}
 
 @end

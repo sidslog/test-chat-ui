@@ -28,6 +28,7 @@
 - (instancetype)init {
     if (self = [super init]) {
         self.imageCache = [[NSCache alloc] init];
+        // ограничим так, чтобы посмотреть, как картинки будут загружаться в ячейки - проверим fps
         self.imageCache.countLimit = 10;
     }
     return self;

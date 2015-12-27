@@ -18,9 +18,10 @@ static CGFloat const kMaxImageHeight = 150;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageHeight;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *imageLeading;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *imageTrailing;
+@property (weak, nonatomic) IBOutlet UIImageView *thumbnailView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @property (nonatomic, strong) NSString* fileName;
-
 
 @end
 
@@ -28,6 +29,11 @@ static CGFloat const kMaxImageHeight = 150;
 
 - (void)awakeFromNib {
     // Initialization code
+}
+
+- (void)prepareForReuse {
+    [super prepareForReuse];
+    self.thumbnailView.image = nil;
 }
 
 - (void) configureWithMessage: (ImageMessage *) message {
@@ -52,6 +58,10 @@ static CGFloat const kMaxImageHeight = 150;
             weakSelf.thumbnailView.image = image;
         }
     }];
+    
+    if (self.thumbnailView.hidden == YES) {
+        [self.activityIndicator startAnimating];
+    }
 }
 
 + (CGSize) imageSizeToPresent: (CGFloat) imageWidth height: (CGFloat) imageHeight {

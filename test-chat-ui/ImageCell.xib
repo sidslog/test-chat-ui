@@ -14,6 +14,9 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="184"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="d4D-cW-7zq">
+                        <rect key="frame" x="150" y="82" width="20" height="20"/>
+                    </activityIndicatorView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="J8b-iF-nrd">
                         <rect key="frame" x="20" y="10" width="280" height="164"/>
                         <constraints>
@@ -23,13 +26,16 @@
                     </imageView>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="d4D-cW-7zq" firstAttribute="centerX" secondItem="J8b-iF-nrd" secondAttribute="centerX" id="FY4-HH-1Qc"/>
                     <constraint firstItem="J8b-iF-nrd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="QUs-fc-cH9"/>
                     <constraint firstItem="J8b-iF-nrd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" priority="750" constant="10" id="Wqq-PN-v0i"/>
+                    <constraint firstItem="d4D-cW-7zq" firstAttribute="centerY" secondItem="J8b-iF-nrd" secondAttribute="centerY" id="YmK-8S-zaM"/>
                     <constraint firstAttribute="bottom" secondItem="J8b-iF-nrd" secondAttribute="bottom" priority="750" constant="10" id="nkd-wa-nkA"/>
                     <constraint firstAttribute="trailing" secondItem="J8b-iF-nrd" secondAttribute="trailing" constant="20" id="qyM-ed-z7m"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="activityIndicator" destination="d4D-cW-7zq" id="Qwz-UA-o4H"/>
                 <outlet property="imageHeight" destination="sdN-Md-ZYM" id="Q3f-6h-3rA"/>
                 <outlet property="imageLeading" destination="QUs-fc-cH9" id="cfL-EF-CC1"/>
                 <outlet property="imageTrailing" destination="qyM-ed-z7m" id="Nh4-jA-ZHa"/>

@@ -39,6 +39,8 @@
 		976F8B891C2F040100540B23 /* BotService.m in Sources */ = {isa = PBXBuildFile; fileRef = 976F8B881C2F040100540B23 /* BotService.m */; };
 		976F8B8F1C30117800540B23 /* UIImage+Resizing.m in Sources */ = {isa = PBXBuildFile; fileRef = 976F8B8E1C30117800540B23 /* UIImage+Resizing.m */; };
 		976F8B921C30120300540B23 /* UIImage+OrientationFix.m in Sources */ = {isa = PBXBuildFile; fileRef = 976F8B911C30120300540B23 /* UIImage+OrientationFix.m */; };
+		97F733201C30885200A86FCD /* MapImageRenderingOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F7331F1C30885200A86FCD /* MapImageRenderingOperation.m */; };
+		97F733231C308CF700A86FCD /* ImageCacheFetchOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F733221C308CF700A86FCD /* ImageCacheFetchOperation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -97,6 +99,10 @@
 		976F8B8E1C30117800540B23 /* UIImage+Resizing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resizing.m"; sourceTree = "<group>"; };
 		976F8B901C30120300540B23 /* UIImage+OrientationFix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+OrientationFix.h"; sourceTree = "<group>"; };
 		976F8B911C30120300540B23 /* UIImage+OrientationFix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+OrientationFix.m"; sourceTree = "<group>"; };
+		97F7331E1C30885200A86FCD /* MapImageRenderingOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapImageRenderingOperation.h; sourceTree = "<group>"; };
+		97F7331F1C30885200A86FCD /* MapImageRenderingOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapImageRenderingOperation.m; sourceTree = "<group>"; };
+		97F733211C308CF700A86FCD /* ImageCacheFetchOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCacheFetchOperation.h; sourceTree = "<group>"; };
+		97F733221C308CF700A86FCD /* ImageCacheFetchOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCacheFetchOperation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +204,8 @@
 				976F8B611C2EB30C00540B23 /* MapImageRenderer.m */,
 				976F8B651C2EB82C00540B23 /* MapImageRenderingCache.h */,
 				976F8B661C2EB82C00540B23 /* MapImageRenderingCache.m */,
+				97F7331E1C30885200A86FCD /* MapImageRenderingOperation.h */,
+				97F7331F1C30885200A86FCD /* MapImageRenderingOperation.m */,
 			);
 			name = MapRendering;
 			sourceTree = "<group>";
@@ -234,6 +242,8 @@
 				976F8B7C1C2ED5D800540B23 /* ImageCache.m */,
 				976F8B8D1C30117800540B23 /* UIImage+Resizing.h */,
 				976F8B8E1C30117800540B23 /* UIImage+Resizing.m */,
+				97F733211C308CF700A86FCD /* ImageCacheFetchOperation.h */,
+				97F733221C308CF700A86FCD /* ImageCacheFetchOperation.m */,
 			);
 			name = ImageCache;
 			sourceTree = "<group>";
@@ -335,6 +345,7 @@
 				976F8B7D1C2ED5D800540B23 /* ImageCache.m in Sources */,
 				976F8B5E1C2EB07C00540B23 /* MessageBase.m in Sources */,
 				976F8B571C2EB07C00540B23 /* TextMessage+CoreDataProperties.m in Sources */,
+				97F733201C30885200A86FCD /* MapImageRenderingOperation.m in Sources */,
 				976F8B921C30120300540B23 /* UIImage+OrientationFix.m in Sources */,
 				976F8B621C2EB30C00540B23 /* MapImageRenderer.m in Sources */,
 				976F8B121C2EA83600540B23 /* ViewController.m in Sources */,
@@ -345,6 +356,7 @@
 				976F8B401C2EAA5B00540B23 /* DataManager.m in Sources */,
 				976F8B581C2EB07C00540B23 /* TextMessage.m in Sources */,
 				976F8B5B1C2EB07C00540B23 /* LocationMessage+CoreDataProperties.m in Sources */,
+				97F733231C308CF700A86FCD /* ImageCacheFetchOperation.m in Sources */,
 				976F8B591C2EB07C00540B23 /* ImageMessage+CoreDataProperties.m in Sources */,
 				976F8B0F1C2EA83600540B23 /* AppDelegate.m in Sources */,
 				976F8B671C2EB82C00540B23 /* MapImageRenderingCache.m in Sources */,
@@ -501,6 +513,7 @@
 				976F8B231C2EA83600540B23 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

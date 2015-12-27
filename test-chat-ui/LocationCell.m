@@ -11,8 +11,11 @@
 #import "MapImageRenderer.h"
 
 @interface LocationCell ()
+
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *imageTrailing;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *imageLeading;
+@property (weak, nonatomic) IBOutlet UIImageView *thumbnailView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @property (nonatomic, assign) CLLocationCoordinate2D coordinate;
 
@@ -22,6 +25,11 @@
 
 - (void)awakeFromNib {
     // Initialization code
+}
+
+- (void)prepareForReuse {
+    [super prepareForReuse];
+    self.thumbnailView.image = nil;
 }
 
 - (void) configureWithMessage: (LocationMessage *) message mapRenderer: (MapImageRenderer *) renderer {
@@ -43,8 +51,13 @@
         if (coordinate.latitude == weakSelf.coordinate.latitude && coordinate.longitude == weakSelf.coordinate.longitude) {
             weakSelf.thumbnailView.image = image;
             weakSelf.thumbnailView.hidden = NO;
+            weakSelf.mapRenderingOperation = nil;
         }
     }];
+    
+    if (self.thumbnailView.hidden == YES) {
+        [self.activityIndicator startAnimating];
+    }
 }
 
 @end

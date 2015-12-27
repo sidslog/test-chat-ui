@@ -9,82 +9,7 @@
 #import "ImageCache.h"
 #import <CommonCrypto/CommonDigest.h>
 #import "UIImage+Resizing.h"
-
-@interface ImageCacheFetchOperation : NSOperation
-
-
-- (instancetype) initWithFileName: (NSString *) fileName inDirectory: (NSURL *) cacheDirectoryURL size: (CGSize) size completion: (ImageCacheLoadCompletionBlock) completion;
-
-@end
-
-
-@interface ImageCacheFetchOperation ()
-
-@property (nonatomic, copy) ImageCacheLoadCompletionBlock completion;
-@property (nonatomic, copy) NSString *fileName;
-@property (nonatomic, assign) CGSize size;
-@property (nonatomic, strong) NSURL *cacheDirectoryURL;
-
-@end
-
-@implementation ImageCacheFetchOperation
-
-- (instancetype) initWithFileName: (NSString *) fileName inDirectory: (NSURL *) cacheDirectoryURL size: (CGSize) size completion: (ImageCacheLoadCompletionBlock) completion {
-    if (self = [super init]) {
-        self.fileName = fileName;
-        self.cacheDirectoryURL = cacheDirectoryURL;
-        self.size = size;
-        self.completion = completion;
-    }
-    return self;
-}
-
-
-- (void)main {
-    
-    if (self.isCancelled) {
-        NSLog(@"cancelled1");
-        return;
-    }
-    
-    NSError *error = nil;
-    NSURL *imageURL = [self.cacheDirectoryURL URLByAppendingPathComponent:self.fileName];
-    NSData *imageData = [NSData dataWithContentsOfFile:imageURL.path options:0 error:&error];
-
-    ImageCacheLoadCompletionBlock completion = self.completion;
-    NSString *fileName = self.fileName;
-    if (imageData) {
-        __block UIImage *image = [UIImage imageWithData:imageData scale:[UIScreen mainScreen].scale];
-        if (self.isCancelled) {
-            NSLog(@"cancelled2");
-            image = nil;
-            return;
-        }
-        image = [UIImage decodedImageWithImage:image];
-        
-        
-//            [self.cachedImages setObject:image forKey:cacheKey];
-        if (completion) {
-            if (self.isCancelled) {
-                NSLog(@"cancelled3");
-                return;
-            }
-            dispatch_sync(dispatch_get_main_queue(), ^{
-                completion(image, fileName, nil);
-                image = nil;
-            });
-        }
-    } else {
-        if (self.completion) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                completion(nil, nil, error);
-            });
-        }
-    }
-}
-
-@end
-
+#import "ImageCacheFetchOperation.h"
 
 @interface ImageCache ()
 
@@ -93,6 +18,7 @@
 @property (nonatomic, strong) NSOperationQueue *operationQueue;
 
 @end
+
 
 @implementation ImageCache
 
@@ -110,10 +36,12 @@
     self = [super init];
     if (self) {
         self.operationQueue = [[NSOperationQueue alloc] init];
+        // так как картинки не нарезали для таблицы - загружать будем одновременно только несколько, затратно по памяти!
         self.operationQueue.maxConcurrentOperationCount = 4;
         
         self.cachedImages = [[NSCache alloc] init];
-        self.cachedImages.countLimit = 20;
+        // ограничим так, чтобы посмотреть, как картинки будут загружаться в ячейки - проверим fps
+        self.cachedImages.countLimit = 10;
         
         NSURL *documentsURL = [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask].firstObject;
         self.cacheDirectoryURL = [documentsURL URLByAppendingPathComponent:@"ImageCache"];
@@ -135,6 +63,8 @@
 }
 
 - (void) saveImage: (UIImage *) image withCompletion: (ImageCacheSaveCompletionBlock) completion {
+    // сохранение происходит редко, поэтому для него просто уйдем в фон и там сделаем все, что нужно
+    // todo: при сохранении нужно было бы нарезать маленькую картинку для таблицы, но сейчас забьем, плюс проверим не течет ли память
     dispatch_async(dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0), ^{
         NSData *imageData = UIImagePNGRepresentation(image);
         NSString *fileName = [ImageCache sha256String:imageData];
@@ -157,15 +87,21 @@
 }
 
 - (NSOperation *) loadImage: (NSString *) fileName ofSize: (CGSize) size withCompletion: (ImageCacheLoadCompletionBlock) completion {
-    
+    // todo: не обрабатываем ситуацию, когда одновременно запрашиваем одну и ту же картинку
     NSString *cacheKey = [self cacheKey:fileName size:size];
     if ([self.cachedImages objectForKey:cacheKey]) {
         if (completion) {
             completion([self.cachedImages objectForKey:cacheKey], fileName, nil);
         }
+        return nil;
     }
     
-    NSOperation *operation = [[ImageCacheFetchOperation alloc] initWithFileName:fileName inDirectory:self.cacheDirectoryURL size:size completion:completion];
+    NSOperation *operation = [[ImageCacheFetchOperation alloc] initWithFileName:fileName inDirectory:self.cacheDirectoryURL size:size completion:^(UIImage *image, NSString *fileName, NSError *error) {
+        if (image) {
+            [self.cachedImages setObject:image forKey:cacheKey];
+        }
+        completion(image, fileName, error);
+    }];
     [self.operationQueue addOperation:operation];
     return operation;
 }
